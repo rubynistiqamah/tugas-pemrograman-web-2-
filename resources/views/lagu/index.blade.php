@@ -36,8 +36,18 @@
                     <td>{{ $lagu->genre }}</td>
                     <td>{{ $lagu->durasi }} Detik</td>
                     <td>
-                        <a class="btn btn-info btn-warning" href="{{ route('lagu.edit', $lagu->id) }}  ">Edit</a>
-                        <a class="btn btn-info btn-sm" href="{{ route('lagu.show', $lagu->id) }}  ">Show</a>
+                        <div class="d-inline text-nowrap">
+                            <a class="btn btn-info btn-warning btn-sm" href="{{ route('lagu.edit', $lagu->id) }}  ">Edit</a>
+                            <a class="btn btn-info btn-sm" href="{{ route('lagu.show', $lagu->id) }}  ">Show</a>
+    
+                            <form method="POST" action="{{ route('lagu.destroy', $lagu) }}" class="d-inline">
+                                @csrf
+                                @method('delete')
+    
+                                <button type="submit" class="btn btn-danger btn-sm"
+                                onclick="return confirm('Yakin ingin menghapus data ini?')">Delete</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach

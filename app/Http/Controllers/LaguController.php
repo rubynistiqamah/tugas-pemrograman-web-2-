@@ -123,8 +123,10 @@ class LaguController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Lagu $lagu)
     {
-        //
+        $lagu->delete();
+
+        return to_route('lagu.index')->withSuccess('Data Berhasil Dihapus');
     }
 }
