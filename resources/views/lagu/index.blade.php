@@ -36,6 +36,7 @@
                     <td>{{ $lagu->genre }}</td>
                     <td>{{ $lagu->durasi }} Detik</td>
                     <td>
+                        <a class="btn btn-info btn-warning" href="{{ route('lagu.edit', $lagu->id) }}  ">Edit</a>
                         <a class="btn btn-info btn-sm" href="{{ route('lagu.show', $lagu->id) }}  ">Show</a>
                     </td>
                 </tr>
