@@ -34,7 +34,33 @@ class LaguController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'judul'  => 'required|string',
+            'artis'  => 'required|string',
+            'album'  => 'required|string',
+            'genre'  => 'required|string',
+            'durasi' => 'required|integer|min:1',
+        ], [
+            'judul.required' => 'Judul lagu wajib diisi.',
+            'judul.string'   => 'Judul lagu harus berupa teks.',
+
+            'artis.required' => 'Nama artis wajib diisi.',
+            'artis.string'   => 'Nama artis harus berupa teks.',
+
+            'album.required' => 'Nama album wajib diisi.',
+            'album.string'   => 'Nama album harus berupa teks.',
+
+            'genre.required' => 'Genre wajib diisi.',
+            'genre.string'   => 'Genre harus berupa teks.',
+
+            'durasi.required' => 'Durasi lagu wajib diisi.',
+            'durasi.integer'  => 'Durasi harus berupa angka bulat (dalam detik).',
+            'durasi.min'      => 'Durasi minimal :min detik.',
+        ]);
+
+        Lagu::create($validated);
+
+        return to_route('lagu.index')->with('success', 'Data Lagu Berhasil Ditambah');
     }
 
     /**

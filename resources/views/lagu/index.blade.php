@@ -3,6 +3,12 @@
     <x-slot:title>
         {{ $title }}
     </x-slot:title>
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+
+            {{ session('success') }}
+        </div>
+    @endif
 
     <a class="btn btn-primary my-3 py-2" href="{{ route('lagu.create') }}
     ">Tambah Data Lagu</a>
@@ -33,9 +39,8 @@
                         <a class="btn btn-info btn-sm" href="{{ route('lagu.show', $lagu->id) }}  ">Show</a>
                     </td>
                 </tr>
-
             @endforeach
         </tbody>
     </table>
 
-    </x-app>
+</x-app>
