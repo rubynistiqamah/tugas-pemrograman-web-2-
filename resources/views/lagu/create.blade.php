@@ -4,6 +4,6 @@
         {{ $title }}
     </x-slot:title>
 
-    <a class="btn btn-primary my-3 py-2" href="{{ route('lagu.create') }}
+    <a class="btn btn-primary my-3 py-2" href="{{ route('lagu.index') }}
     ">Kembali</a>
 </x-app>

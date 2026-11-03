@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lagu;
 use Illuminate\Http\Request;
 
 class LaguController extends Controller
@@ -12,7 +13,8 @@ class LaguController extends Controller
     public function index()
     {
         return view('lagu.index',[
-            'title' =>'Lagu'
+            'title' =>'Lagu',
+            'lagus' => Lagu::latest()->get()
         ]);
         
         }
@@ -38,10 +40,11 @@ class LaguController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Lagu $lagu)
     {
         return view('lagu.show',[
-            'title' =>'Detail Lagu'
+            'title' =>'Detail Lagu',
+            'lagu' => $lagu
         ]);
     }
 
